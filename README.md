@@ -80,20 +80,49 @@ Beyond the raw data, several high-impact variables were engineered to capture bu
 
 # Model Tested
 
+## 🤖 The Machine Learning Pipeline
+I implemented a bifurcated pipeline to ensure every algorithm received the data format it required to perform optimally:
+
+- Tree-Based Models (Random Forest, HistGradientBoosting): Trained on raw numerical data to preserve the original decision boundaries of categories like Tiers.
+
+- Distance/Linear Models (KNN, Logistic Regression): Trained on Standardized (Scaled) data to prevent larger numerical values (like price) from skewing the results.
+
+
 > [!NOTE]
 
 > The Train-Test Split
 The model has been trained on 80% of the data and then tested on the 20%
-> 
-## Random Forest
-### After trying different constraints accuracy of 0.5955
 
-<img width="750" height="577" alt="image" src="https://github.com/user-attachments/assets/80cca667-037a-4f89-b52e-54a21aedd58a" />
+## 📊 Model Comparison & Results
+
+<img width="1600" height="933" alt="image" src="https://github.com/user-attachments/assets/e45c15a2-eda8-405b-9ff7-36b3a436a05e" />
+
+## The Winner: HistGradientBoosting
+While accuracy is a standard metric, for food waste management, Recall is the primary focus. HistGradientBoosting, identifies 84.6% of waste cases, allowing retailers to intervene before the product is lost. This is significantly more effective than traditional logistic models, which only captured 62% of potential waste
+
+## 📈 Key Insights
+
+- Store Tier Impact: Stores in "Tier 3" have a significantly higher waste rate regardless of the brand, suggesting operational issues rather than product issues.
+
+- The 50% Threshold: A 50% discount is the "sweet spot" for most brands; increasing the discount further provides diminishing returns on sale probability.
+
+<img width="1600" height="960" alt="image" src="https://github.com/user-attachments/assets/470382e2-db13-4946-9807-ad57a53c6057" />
+
+## "Understanding the Drivers of Waste"
+
+- Store Tier: Highlights that store location and management efficiency are major predictors of stock recovery.
+
+- New PVP: Confirms that pricing is a primary lever for moving nearing-expiry stock.
+
+- SKU & Brand Scores: Show that customer loyalty and product category play a significant role in the success of the "Pink Label" program.
 
 
-Feature Importance: What is the model looking at?
-<img width="943" height="686" alt="image" src="https://github.com/user-attachments/assets/f99053b3-900d-4b2a-b04b-ae76cd747298" />
+## 🔧 Technical Stack
+- Language: Python 3.x
 
+- Libraries: Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn
+
+- Environment: Jupyter Notebook / Google Colab
 
 
   
